@@ -14,6 +14,7 @@ gem 'puma', '~> 3.0'
 
 gem 'pry-rails'
 gem 'pry-nav'
+gem 'ffaker'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
@@ -29,7 +30,6 @@ gem 'pry-nav'
 # gem 'rack-cors'
 
 group :development, :test do
-  gem 'ffaker'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
