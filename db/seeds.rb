@@ -13,5 +13,5 @@
     user.posts << Post.new(title: FFaker::Movie.title,
                            body: FFaker::DizzleIpsum.paragraph)
   end
-  user.save!
+  user.save
 end
