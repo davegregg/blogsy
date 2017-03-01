@@ -1,21 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 5.times do
-  user = User.new(username: FFaker::InternetSE.user_name_random,
-                  email: FFaker::Internet.email)
+  generate_user = -> { User.new(username: FFaker::InternetSE.user_name_random,
+                                email: FFaker::Internet.email,
+                                bio: FFaker::CheesyLingo.sentence) }
   rand(1..31).times do
     post = Post.new(title: FFaker::Movie.title,
-                           body: FFaker::DizzleIpsum.paragraph)
+                    body: FFaker::DizzleIpsum.paragraph)
     rand(7).times do
-      post.comments << Comment.new(body: FFaker::Tweet.tweet)
+      commenter = generate_user.()
+      comment = Comment.new(body: FFaker::Tweet.tweet,
+                            user: commenter)
+      post.comments << comment
     end
+    user = generate_user.()
     user.posts << post
+    user.save!
   end
-  user.save!
 end

@@ -11,6 +11,8 @@ gem 'rails', '~> 5.0.1'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+# Use model serializers
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 
 gem 'pry-rails'
 gem 'pry-nav'
